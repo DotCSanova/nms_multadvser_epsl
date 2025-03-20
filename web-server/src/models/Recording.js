@@ -4,8 +4,8 @@ const mongoose = require('mongoose');
 const recordingSchema = new mongoose.Schema(
   {
     userId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',  // Referencia a la colección `users`
+      type: mongoose.Schema.Types.ObjectId, // Para almacenar un identificador unico. Permite establecer relaciones entre colecciones
+      ref: 'User',  // Referencia a la colección `users`. El valor de userId debe ser un ObjectId que exista en la colección users.
       required: true,
     },
     streamUrl: {
