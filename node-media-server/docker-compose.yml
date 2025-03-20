@@ -15,3 +15,6 @@ networks:
   media-server:
     driver: bridge
     name: media-server
+
+
+
