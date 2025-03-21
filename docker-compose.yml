@@ -7,20 +7,23 @@ services:
     ports: 
       - 8000:8000
       - 1935:1935
-  
+    networks:
+      - multimedia_app
+
   api:
     build: ./web-server
     ports:
       - 3000:3000
     environment:
-      MONGO_URI:: mongodb://db/mongodb_data
-    volumes:
-      - ./web-server/src:/app/src
+      MONGO_URI: mongodb://root:multimedia@db:27017/NMS_MULTIMEDIA_DB?authSource=admin
     depends_on:
       - db
+    networks:
+      - multimedia_app
 
   db:
-    image: mongo:5.0.19-focal
+    image: mongo:latest
+    container_name: mongodb
     ports:
       - 27017:27017
     environment:
@@ -28,9 +31,12 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: multimedia
     volumes:
       - mongodb_data:/data/db
+    networks:
+      - multimedia_app
 
 volumes:
   mongodb_data:
 
 networks:
   multimedia_app:
+    driver: bridge

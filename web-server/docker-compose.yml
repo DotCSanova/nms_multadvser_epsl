@@ -5,7 +5,7 @@ services:
     image: mongo:latest
     container_name: mongodb
     ports:
-      - "27017:27017"  # Puerto de MongoDB
+      - 27017:27017  # Puerto de MongoDB
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: multimedia
@@ -14,7 +14,7 @@ services:
   web-server:
     build: .
     ports:
-      - "3000:3000"  # Puerto del Web Server
+      - 3000:3000  # Puerto del Web Server
     depends_on:
       - mongodb
     environment:
