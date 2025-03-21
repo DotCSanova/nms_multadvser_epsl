@@ -16,6 +16,8 @@ services:
       - 3000:3000
     environment:
       MONGO_URI: mongodb://root:multimedia@db:27017/NMS_MULTIMEDIA_DB?authSource=admin
+    volumes:
+      - ./web-server/src:/app/src
     depends_on:
       - db
     networks:
