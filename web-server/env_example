@@ -1,0 +1,6 @@
+PORT=3000
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=multimedia
+DB_NAME=NMS_MULTIMEDIA_DB  
+JWT_SECRET=multimedia
