@@ -2,6 +2,7 @@ const express = require('express');
 require('dotenv').config({ path: '../.env' });
 const { connect } = require('./config/db');
 const authRoutes = require('./api/auth');
+const streamRoutes = require('./api/streams');
 
 
 const app = express();
@@ -18,11 +19,11 @@ connect();
 
 // Rutas
 app.use('/api/auth', authRoutes);
-//app.use('/api/streams', streamRoutes);
+app.use('/api/streams', streamRoutes);
 //app.use('/api/users', userRoutes);
 
 app.get('/', (req, res) => {
-    res.send('sERVIDOR fUNCIONANDO bien!');
+    res.send('SERVIDOR fUNCIONANDO bien!');
     });
 // Iniciar servidor
 app.listen(PORT, () => {

@@ -7,8 +7,6 @@ services:
     ports: 
       - 8000:8000
       - 1935:1935
-    volumes:
-      - ./node-media-server/index.js:/app/index.js
     networks:
       - multimedia_app
 
@@ -18,10 +16,12 @@ services:
       - 3000:3000
     environment:
       MONGO_URI: mongodb://root:multimedia@db:27017/NMS_MULTIMEDIA_DB?authSource=admin
+      NMS_URI: http://multimedia_server:8000
     volumes:
       - ./web-server/src:/app/src
     depends_on:
       - db
+      - multimedia_server
     networks:
       - multimedia_app
 
