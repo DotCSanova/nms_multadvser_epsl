@@ -4,7 +4,7 @@ const getActiveStreams = require('../utils/getActiveStreams');  // Importar la f
 const router = express.Router();
 
 // Obtener los streamings activos
-router.get('/streams', async (req, res) => {
+router.get('/active_streams', async (req, res) => {
   try {
     const streams = await getActiveStreams();
     res.json({ streams });

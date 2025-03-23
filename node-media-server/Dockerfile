@@ -18,8 +18,11 @@ USER root
 RUN apk add --no-cache ffmpeg
 
 # /usr/bin/ffmpeg is the default path for ffmpeg, copy it to /app
-RUN cp /usr/bin/ffmpeg ./
+RUN cp /usr/bin/ffmpeg /app/ffmpeg && \
+    chown nodeapp:nodeapp /app/ffmpeg && \
+    chmod +x /app/ffmpeg
 
+    
 USER nodeapp
 
 # Copying all the files
