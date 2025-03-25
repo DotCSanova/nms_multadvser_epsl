@@ -8,12 +8,13 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  const API_URL = import.meta.env.VITE_BACKEND_URI || 'http://localhost:3000';
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        'http://localhost:3000/api/auth/login',
+        `${API_URL}/api/auth/login`,
         { username, password }, // Datos enviados en JSON
         { headers: { 'Content-Type': 'application/json' } } // Asegura que el backend lo reciba correctamente
       );

@@ -9,7 +9,7 @@ const streamRoutes = require('./api/streams');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(cors({ origin: 'http://localhost:5173' })); // Solo permite peticiones de este este origen. !! CAMBIAR AL DOCKERIZAR FRONTEND
+app.use(cors({ origin: 'http://localhost' })); // Solo permite peticiones de este este origen.
 
 // Middleware para analizar cuerpo de solicitud como JSON
 app.use(express.json(), (req, res, next) => {

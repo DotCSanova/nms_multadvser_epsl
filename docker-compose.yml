@@ -1,6 +1,18 @@
 version: '3.8'
 
 services:
+  frontend:
+    build: ./frontend
+    ports:
+      - 80:5173
+    volumes:
+      - ./frontend/src:/app/src
+    networks:
+      - multimedia_app
+    environment:
+      VITE_BACKEND_URI: http://localhost:3000
+    depends_on:
+      - api
 
   multimedia_server:
     build: ./node-media-server

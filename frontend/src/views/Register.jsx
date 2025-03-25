@@ -7,12 +7,13 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  const API_URL = import.meta.env.VITE_BACKEND_URI || 'http://localhost:3000';
 
   const handleRegister = async (e) => { //componente con estado
     e.preventDefault();
     try {
       const response = await axios.post(
-        'http://localhost:3000/api/auth/register',
+        `${API_URL}/api/auth/register`,
         { username, password }, // Datos enviados en JSON
         { headers: { 'Content-Type': 'application/json' } } // Asegura que el backend lo reciba correctamente
       );

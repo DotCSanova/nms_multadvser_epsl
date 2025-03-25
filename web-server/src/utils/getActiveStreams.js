@@ -13,7 +13,7 @@ const getActiveStreams = async () => {
       return {
         name: streamName,
         clients: streamsData[streamName].subscribers.length,
-        url: `${nmsUri}/live/${streamName}/index.m3u8`,
+        url: `http://localhost:8000/live/${streamName}/index.m3u8`,
         audio: streamInfo.audio,
         video: streamInfo.video,
       };

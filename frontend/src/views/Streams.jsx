@@ -8,12 +8,13 @@ const Streams = () => {
   const [currentStream, setCurrentStream] = useState(null);
   const videoRef = useRef(null);
   const playerRef = useRef(null);
+  const API_URL = import.meta.env.VITE_BACKEND_URI || 'http://localhost:3000'; // Modificar al pasar a produccion con ngnix
 
   useEffect(() => {
     const fetchStreams = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get('http://localhost:3000/api/streams/active_streams', {
+        const response = await axios.get(`${API_URL}/api/streams/active_streams`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setStreams(response.data.streams);
