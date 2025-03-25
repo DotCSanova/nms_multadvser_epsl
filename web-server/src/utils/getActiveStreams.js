@@ -5,7 +5,7 @@ const getActiveStreams = async () => {
 
     const nmsUri = process.env.NMS_URI;  // Usar la variable de entorno
     const response = await axios.get(`${nmsUri}/api/streams`);
-    const streamsData = response.data.live;
+    const streamsData = response.data.live || {};
 
     // Convertir la respuesta en una lista de streams
     const streams = Object.keys(streamsData).map((streamName) => {
