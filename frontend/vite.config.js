@@ -4,8 +4,8 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
-    host: '0.0.0.0',  // Escuchar en todas las interfaces de red
-    port: 5173,  // El puerto interno dentro del contenedor
-  },
-})
-
+    allowedHosts: [
+      '4874-5-225-237-18.ngrok-free.app' // Modificar segun el tunel que corresponda
+    ]
+  }
+});
