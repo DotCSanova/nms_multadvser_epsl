@@ -1,28 +1,18 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../hooks/useAuth';
 
 const Register = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const { register, error } = useAuth();
   const navigate = useNavigate();
-  const API_URL = import.meta.env.VITE_BACKEND_URI || 'http://localhost:3000';
 
-  const handleRegister = async (e) => { //componente con estado
+  const handleRegister = async (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post(
-        `${API_URL}/api/auth/register`,
-        { username, password }, // Datos enviados en JSON
-        { headers: { 'Content-Type': 'application/json' } } // Asegura que el backend lo reciba correctamente
-      );
-
-      console.log(response.data); // Ver qué responde el backend
-      navigate('/login'); // Redirigir al login después de registrar
-    } catch (err) {
-      console.error(err.response?.data || err.message);
-      setError('Error al registrar usuario');
+    const success = await register(username, password);
+    if (success) {
+      navigate('/login');
     }
   };
 
@@ -43,7 +33,7 @@ const Register = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">Registrarse</button>
+        <button type="submit">Registrarse aqui</button>
       </form>
     </div>
   );
