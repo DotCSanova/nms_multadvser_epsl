@@ -8,11 +8,8 @@ export const useAuth = () => {
   // Verificar si el usuario está autenticado
   const checkAuth = () => {
     const token = localStorage.getItem('token');
-    if (token) {
-      setIsAuthenticated(true);
-    } else {
-      setIsAuthenticated(false);
-    }
+    setIsAuthenticated(!!token); // Convierte el token en un booleano
+    return(!!token); // Resuelve la promesa con el estado de autenticación
   };
 
   // Manejo de login

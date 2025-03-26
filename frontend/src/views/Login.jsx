@@ -6,13 +6,14 @@ const Login = () => {
   console.log('Login component rendered');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const { login, error } = useAuth();  // Usamos el hook para la lógica de autenticación
+  const { login, setIsAuthenticated,  error } = useAuth();  // Usamos el hook para la lógica de autenticación
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     const success = await login(username, password); // Usamos el login del hook
     if (success) {
+      setIsAuthenticated(true);
       navigate('/streams'); // Redirigimos a streams si el login es exitoso
     } else {
       // El mensaje de error ya se maneja en el hook, no es necesario agregarlo aquí

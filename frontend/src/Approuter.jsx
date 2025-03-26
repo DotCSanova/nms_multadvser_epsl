@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useAuth } from './hooks/useAuth';
 import Login from './views/Login';
@@ -9,10 +9,9 @@ const AppRouter = () => {
   const { isAuthenticated, checkAuth } = useAuth();
   const [loading, setLoading] = useState(true); // Estado de carga
 
-  // Ejecutamos checkAuth al cargar el componente
   useEffect(() => {
-    checkAuth();
-    setLoading(false); // Después de verificar, dejamos de mostrar el "loading"
+    checkAuth(); // Verificamos si el usuario está autenticado
+    setLoading(false); // Cuando termine la verificación, dejamos de mostrar "loading"
   }, [checkAuth]);
 
   // Si estamos cargando, no renderizamos nada aún
@@ -21,12 +20,9 @@ const AppRouter = () => {
   }
 
   return (
-    <Router>
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-
-        {/* Ruta protegida para /streams */}
         <Route
           path="/streams"
           element={
@@ -37,9 +33,8 @@ const AppRouter = () => {
             )
           }
         />
-        <Route path="/" element={<Register />} /> {/* Ruta por defecto */}
+        <Route path="/" element={<Navigate to="/register" />} />
       </Routes>
-    </Router>
   );
 };
 
