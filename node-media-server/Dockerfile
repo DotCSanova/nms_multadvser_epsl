@@ -1,4 +1,4 @@
-FROM node:14-alpine
+FROM node:20-alpine
 
 #Create and use new user for security
 RUN addgroup nodeapp && adduser -S -G nodeapp nodeapp
@@ -11,7 +11,7 @@ WORKDIR /app
 COPY --chown=nodeapp package*.json ./
 
 # Installing dependencies
-RUN npm install
+RUN npm install --production
 
 USER root
 # Install FFmpeg. This is needed to convert the video to HLS
