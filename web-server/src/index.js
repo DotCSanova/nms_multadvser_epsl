@@ -4,6 +4,7 @@ require('dotenv').config({ path: '../.env' });
 const { connect } = require('./config/db');
 const authRoutes = require('./api/auth');
 const streamRoutes = require('./api/streams');
+const uploadRoutes = require('./api/upload');
 
 
 const app = express();
@@ -23,6 +24,7 @@ connect();
 // Rutas
 app.use('/api/auth', authRoutes);
 app.use('/api/streams', streamRoutes);
+app.use('/api/upload', uploadRoutes);
 //app.use('/api/users', userRoutes);
 
 app.get('/', (req, res) => {

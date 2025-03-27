@@ -4,6 +4,7 @@ import { useAuth } from './hooks/useAuth';
 import Login from './views/Login';
 import Register from './views/Register';
 import Streams from './views/Streams';
+import App from "./App"; 
 
 const AppRouter = () => {
   const { isAuthenticated, checkAuth } = useAuth();
