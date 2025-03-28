@@ -1,11 +1,12 @@
 const express = require('express');
-const multer = require('multer');
+const multer = require('multer'); //middleware para getionar subida de archivos en express
 const ffmpeg = require('fluent-ffmpeg');
 const path = require('path');
 const fs = require('fs');
 
 const router = express.Router();
 const upload = multer({ dest: path.join(__dirname, '../uploads/') });
+const nmsRtmpUri = process.env.NMS_RTMP_URI;
 
 router.post('/upload-video', upload.single('video'), (req, res) => {
     if (!req.file) {
@@ -28,7 +29,7 @@ router.post('/upload-video', upload.single('video'), (req, res) => {
         '-ar 44100',
         '-f flv'
     ])
-    .output('rtmp://multimedia_server:1935/live/stream')
+    .output(`${nmsRtmpUri}/live/stream`)
     .on('start', (commandLine) => {
         console.log('Comando FFmpeg:', commandLine);
     })

@@ -29,6 +29,7 @@ services:
     environment:
       MONGO_URI: mongodb://root:multimedia@db:27017/NMS_MULTIMEDIA_DB?authSource=admin
       NMS_URI: http://multimedia_server:8000
+      NMS_RTMP_URI: rtmp://multimedia_server:1935
     volumes:
       - ./web-server/src:/app/src
     depends_on:
