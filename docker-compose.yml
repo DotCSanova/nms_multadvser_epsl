@@ -4,7 +4,7 @@ services:
   frontend:
     build: ./frontend
     ports:
-      - 80:5173
+      - 80:8080
     volumes:
       - ./frontend/src:/app/src
     networks:
