@@ -20,6 +20,10 @@ const recordingSchema = new mongoose.Schema(
       type: Number,
       default: 0,  // Duración en segundos (opcional)
     },
+    isFavorite: {
+      type: Boolean,
+      default: false,  // Valor por defecto para indicar que no es favorito
+    },
   },
   {
     timestamps: true,  // Añade automáticamente `createdAt` y `updatedAt`

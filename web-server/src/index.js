@@ -5,6 +5,8 @@ const { connect } = require('./config/db');
 const authRoutes = require('./api/auth');
 const streamRoutes = require('./api/streams');
 const uploadRoutes = require('./api/upload');
+const recordRoutes = require('./api/record');
+//require('./websocket/signaling');
 
 
 const app = express();
@@ -25,6 +27,7 @@ connect();
 app.use('/api/auth', authRoutes);
 app.use('/api/streams', streamRoutes);
 app.use('/api/upload', uploadRoutes);
+app.use('/api/record', recordRoutes);
 //app.use('/api/users', userRoutes);
 
 app.get('/', (req, res) => {
