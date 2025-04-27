@@ -19,7 +19,7 @@ Full‑stack platform for video upload, live restreaming, playback, and recordin
 
 ## 🖧 Architecture
 
-![App General Architecture](./docs/images/app_general_architecture.png)
+![App General Architecture](./docs/images/App_general_architecture.png)
 
 
 > More technical detail lives in the **Reference Manual**.
@@ -42,7 +42,7 @@ $ docker compose up -d --build
 
 - **Frontend**: [http://localhost](http://localhost)
 - **API**: [http://localhost:3000](http://localhost:3000)
-- **NMS HLS**: [http://localhost:8000](http://localhost:8000)
+- **NMS HTTP**: [http://localhost:8000](http://localhost:8000)
 - **RTMP ingest**: `rtmp://localhost:1935/live`
 
 ---
