@@ -62,7 +62,7 @@ See section 4.2 of the **Reference Manual** for step‑by‑step instructions.
 
 ## 📑 API
 
-REST endpoints are located under `web-server/src/api/*` and are fully documented in the [Reference Manual, section 7](docs/reference_manual.md#7-rest-api-reference).
+Los endpoints REST se encuentran en `web-server/src/api/*` y están completamente documentados en el [Manual de Referencia, sección 6](docs/reference_manual/reference_manual.md#6-web-server-backend-rest-api-reference).
 
 ---
 
